@@ -1,2 +1,3 @@
 buildCmd: 'gradle clean assemble'
 testCmd: 'gradle test -x compileJava'
+skipDifferentialAnalysis: true
