@@ -1,0 +1,51 @@
+cbmcArguments:
+    slice-function-calls: org\.slf4j\.Logger.* 
+phases:
+-
+  timeout: 300
+  cbmcArguments:
+    classpath: '/tools/cbmc/models-simple-overlay.jar:/tools/cbmc/models.jar:.'
+    depth: false
+    java-max-input-array-length: 10
+    java-max-vla-length: 33
+    java-throw-runtime-exceptions: false
+    string-max-input-length: 10
+    string-max-length: 300
+    string-printable: true
+    unwind: 1
+    java-external-code-action: mock-non-jdk
+    java-test-input-factory: bmc
+    lazy-methods-extra-entry-point: [ '(?!javax?).*<init>.*', '(?!javax?).*\.set[A-Z]\w*' ]
+    java-assume-inputs-non-null: true
+-
+  timeout: 300
+  cbmcArguments:
+    classpath: '/tools/cbmc/models-simple-overlay.jar:/tools/cbmc/models.jar:.'
+    depth: false
+    java-max-input-array-length: 20
+    java-max-vla-length: 33
+    java-throw-runtime-exceptions: false
+    string-max-input-length: 100
+    string-max-length: 400
+    string-printable: false
+    unwind: 2
+    java-external-code-action: mock-non-jdk
+    java-test-input-factory: bmc
+    lazy-methods-extra-entry-point: [ '(?!javax?).*<init>.*', '(?!javax?).*\.set[A-Z]\w*' ]
+    java-assume-inputs-non-null: false
+-
+  timeout: 300
+  cbmcArguments:
+    classpath: '/tools/cbmc/models-simple-overlay.jar:/tools/cbmc/models.jar:.'
+    depth: false
+    java-max-input-array-length: 30
+    java-max-vla-length: 33
+    java-throw-runtime-exceptions: true
+    string-max-length: 400
+    string-max-input-length: 10
+    string-printable: false
+    unwind: 2
+    java-external-code-action: mock-non-jdk
+    java-test-input-factory: bmc
+    lazy-methods-extra-entry-point: [ '(?!javax?).*<init>.*', '(?!javax?).*\.set[A-Z]\w*' ]
+    java-assume-inputs-non-null: false
